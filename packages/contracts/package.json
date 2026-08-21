@@ -1,0 +1,9 @@
+{
+  "name": "@cambio/contracts",
+  "private": true,
+  "version": "0.0.0",
+  "types": "./index.ts",
+  "exports": {
+    ".": "./index.ts"
+  }
+}

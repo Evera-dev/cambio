@@ -9,18 +9,7 @@ import {
   WsException,
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
-
-interface Player {
-  id: string;
-  socketId: string;
-  name: string;
-}
-
-interface Room {
-  id: string;
-  hostId: string;
-  players: Player[];
-}
+import { Room, Player } from '@cambio/contracts';
 
 @WebSocketGateway({
   cors: {
@@ -66,7 +55,6 @@ export class GameGateway implements OnGatewayConnection, OnGatewayDisconnect {
     this.rooms.set(roomId, room);
 
     client.join(roomId);
-
 
     return {
       roomId,
