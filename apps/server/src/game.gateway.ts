@@ -27,7 +27,7 @@ interface Room {
     origin: '*',
   },
 })
-export class RoomGateway implements OnGatewayConnection, OnGatewayDisconnect {
+export class GameGateway implements OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer()
   server!: Server;
 
@@ -49,6 +49,7 @@ export class RoomGateway implements OnGatewayConnection, OnGatewayDisconnect {
     @MessageBody() body: { playerName: string },
   ) {
     const roomId = crypto.randomUUID();
+    console.log(`Hola: ${body.playerName}`);
 
     const player: Player = {
       id: crypto.randomUUID(),
@@ -65,6 +66,7 @@ export class RoomGateway implements OnGatewayConnection, OnGatewayDisconnect {
     this.rooms.set(roomId, room);
 
     client.join(roomId);
+
 
     return {
       roomId,
