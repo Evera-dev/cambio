@@ -17,7 +17,6 @@ export function HomePage() {
         
         console.log("resposne ", response)
 
-
         setIsLoading(false)
     }
 
